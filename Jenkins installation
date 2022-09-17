@@ -1,0 +1,39 @@
+ Jenkins insatllation in rhel/centos
+ ----------------------------------------
+ #whatever the packages u download, it will go and store in etc directory on the name of yum.repos.d
+ 
+ sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+ 
+ sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+ 
+ sudo yum install jenkins -y 
+ 
+ sudo service jenkins enable
+ sudo systemctl enable jenkins
+ 
+ sudo service start jenkins
+ sudo systemctl jenkins start
+ 
+ sudo service status jenkins
+ sudo systemctl jenkins status
+ 
+ Jenkins installation in ubuntu/debian
+ --------------------------------------
+ 
+# This is the Debian package repository of Jenkins to automate installation and upgrade. To use this repository, first add the key to your system:
+sudo curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+    /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+  
+ # Then add a Jenkins apt repository entry:
+ sudo echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+    https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+    /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+#Update your local package index, then finally install Jenkins:
+  sudo apt-get update 
+  sudo apt-get install jenkins -y
+  
+  sudo service jenkins enable
+  sudo service jenkins start
+  sudo service jenkins status
+  
